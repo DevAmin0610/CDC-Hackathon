@@ -4,12 +4,15 @@ import pandas as pd
 # Folder containing the CSVs, found relative to this file
 DATA_DIR = Path(__file__).resolve().parent / "CDC_Hackathon_Data"
 
-YEARS = ["2021", "2022", "2023", "2024"]
-
+YEARS = ["2021", "2022", "2023", "2024", "2025"]
 
 def load_year(year):
-    """Load one year's debt collection complaints."""
-    return pd.read_csv(DATA_DIR / f"debt-complaints-{year}.csv", dtype=str)
+    """Load one year's complaints, combining the parts if a year is split into several files."""
+    files = sorted(DATA_DIR.glob(f"debt-complaints-{year}*.csv"))
+    if not files:
+        raise FileNotFoundError(f"No files found for {year} in {DATA_DIR}")
+    df = pd.concat([pd.read_csv(f, dtype=str) for f in files], ignore_index=True)
+    return df.drop_duplicates(subset="Complaint ID")
 
 
 def load_all():
