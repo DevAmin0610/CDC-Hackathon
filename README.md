@@ -1,5 +1,6 @@
 # CDC Hackathon
 
+Roshan: 
 Claude was my primary AI assistant used as supplimental advice and guidance in this project. Below I will outline the specific ways in which Claude was used to help me complete my portion of this project.
 
 # 1. Filtering data frame to only include the 50 US states:
@@ -37,6 +38,10 @@ pivot = (
         kind='barh', stacked=True, ax=ax, width=0.75,
         color=[subproduct_color[c] for c in pivot.columns],
         legend=False,
+
+Dev: 
+
+I used Claude to help me combine the 2025 Customer Complaints dataset as it was initially over 100,000 rows and I split it into 3 parts by the months and then used Claude to combine it so I can use it locally. I used Claude to also help me combine some bar charts as I initially created individual ones from 2021-2025 and wanted a way to combine them into one. I ultimately made a line chart myself. 
     )
 
 # 4. I used Claude to help me create and split the standardized disparity ratio heat map into two separate heatmaps, one for the top 25 states and one for the bottom 25 states. 
